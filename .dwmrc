@@ -1,0 +1,49 @@
+#!/bin/python3
+import os
+import time
+
+bash_comands  = [
+    'xrandr --output DVI-I-1 --left-of DVI-I-2',
+    'wmname LG3D #fix java windows issue',
+    'xset b off #turn off speaker in x',
+    'export __GLVND_DISALLOW_PATCHING=1',
+    'setxkbmap -layout us,ru',
+    'setxkbmap -option',                                      #clear xkbmap options
+    'setxkbmap -option grp:ctrl_shift_toggle,grp_led:scroll', #change language layout
+    #setxkbmap -option ctrl:swapcaps                       # Swap Left Control and Caps Lock
+    'setxkbmap -option ctrl:nocaps',                         # Make Caps Lock a Control key
+
+    'feh --randomize --bg-scale ~/Pictures/wallpapers/*',
+    '~/scripts/setsound&' ]
+
+for c in bash_comands:
+    os.system(c)
+
+
+def dateStr():
+    t = time.localtime()
+    return "{:02}:{:02}:{:02}".format(t[3], t[4], t[5])
+
+def batStr():
+    ret = ""
+    try:
+        ret = "\u26a1" + open("/sys/class/power_supply/BAT0/capacity").read().strip()
+    except:
+        pass
+    return ret
+
+while True:
+    os.system("xsetroot -name '{}  {}'".format(batStr(), dateStr()))
+    time.sleep(1)
+    
+
+
+
+#for composing uncoment xcompmgr or compton
+#xcompmgr&
+#compton --backend glx --refresh-rate 60 --vsync opengl & 
+
+#while true; do
+#    xsetroot -name "$(printf '\u26a1')$(cat /sys/class/power_supply/BAT0/capacity)%  $( date +%R:%S )"
+#    sleep 1
+#done
