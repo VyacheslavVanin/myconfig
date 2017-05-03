@@ -75,7 +75,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 
 filetype plugin indent on
-colo solarized
+try
+    colo solarized
+catch
+endtry
 
 let mapleader=' '
 
