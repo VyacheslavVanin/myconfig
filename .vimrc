@@ -39,9 +39,6 @@ set cursorline
 "let xml_syntax_folding=1
 
 filetype off
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"Plugin 'gmarik/Vundle.vim'    
 call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'flazz/vim-colorschemes'
@@ -58,7 +55,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
 Plug 'kris2k/a.vim'
 call plug#end()
-"call vundle#end()
+
+let g:plug_shallow = 0
 
 let g:rainbow_active=0
 
