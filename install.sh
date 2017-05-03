@@ -16,10 +16,13 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 # Install plugins
+if command -v nvim ; then
+    nvim +PlugInstall +PlugUpdate +qall
+fi
+
 if command -v vim ; then
     vim +PlugInstall +PlugUpdate +qall
 fi
 
-if command -v nvim ; then
-    nvim +PlugInstall +PlugUpdate +qall
-fi
+cd ~/.vim/plugged/YouCompleteMe/;
+./install.py --clang-completer --system-libclang
