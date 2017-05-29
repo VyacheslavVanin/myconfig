@@ -70,7 +70,7 @@ let g:DoxygenToolkit_compactDoc = "yes"
 let g:NERDTreeWinPos="right"
 
 " ctrlp filter
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz,*.o
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz,*.o,*.png,*.jpg
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 
