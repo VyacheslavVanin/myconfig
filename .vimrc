@@ -13,6 +13,7 @@ set smartcase
 
 set rnu
 set colorcolumn=80
+set tw=80
 
 set ai
 set cindent
