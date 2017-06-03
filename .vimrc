@@ -11,7 +11,7 @@ set incsearch
 set ic
 set smartcase
 
-set rnu
+set nornu
 set colorcolumn=80
 set tw=80
 
