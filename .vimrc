@@ -104,3 +104,5 @@ nnoremap <C-w>t :tabnew<CR>
 " Toggle rainbow colors
 nnoremap <F6> :SemanticHighlightToggle<CR>:RainbowToggle<CR>
 
+" Ru mapping
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
