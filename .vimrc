@@ -83,7 +83,9 @@ endtry
 
 let mapleader=' '
 
-nnoremap <M-f> * :vimgrep /<C-R>// **/*.h **/*.c **/*.cpp **/*.hpp<CR> :copen<CR>
+nnoremap <M-f> * :vimgrep /<C-R>// **/*.cpp **/*.[ch] **/*.hpp <CR> :copen<CR>
+vnoremap <M-f> y :vimgrep /<C-R>"/ **/*.cpp **/*.[ch] **/*.hpp <CR> :copen<CR>
+
 nnoremap <M-e><M-w> : e ++enc=cp1251<CR>
 nnoremap <M-e><M-u> : e ++enc=utf-8<CR>
 
