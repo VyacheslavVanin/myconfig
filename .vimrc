@@ -107,6 +107,7 @@ nnoremap <F6> :SemanticHighlightToggle<CR>:RainbowToggle<CR>
 " Ru mapping
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+" Tab mappings
 map <M-1> 1gt
 map <M-2> 2gt
 map <M-3> 3gt
@@ -117,3 +118,6 @@ map <M-7> 7gt
 map <M-8> 8gt
 map <M-9> 9gt
 map <M-0> 10gt
+
+" Selection to table
+vnoremap <M-t> :!column -t \| sed -e "s/\s\+$//g"<CR>
