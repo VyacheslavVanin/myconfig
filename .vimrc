@@ -91,6 +91,7 @@ nnoremap <M-e><M-u> : e ++enc=utf-8<CR>
 
 nnoremap <F12> : YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :  YcmForceCompileAndDiagnostics<CR><CR>
+nnoremap <F11> : YcmCompleter FixIt<CR>
 
 " DoxygenToolKit mappings
 imap /** <Esc> :Dox<CR>
