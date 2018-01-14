@@ -25,7 +25,7 @@ syntax on
 set backspace=indent,eol,start
 set mouse=a
 
-set scrolloff=10
+set scrolloff=5
 
 if has("gui_running")
 set guifont=DejaVu\ Sans\ Mono\ 20
