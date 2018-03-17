@@ -69,6 +69,7 @@ let g:DoxygenToolkit_compactOneLineDoc = "yes"
 let g:DoxygenToolkit_compactDoc = "yes"
 
 let g:NERDTreeWinPos="right"
+let g:NERDTreeIgnore=['\.vim$', '\~$', '.o$[[file]]']
 
 " ctrlp filter
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.tar.gz,*.o,*.png,*.jpg
