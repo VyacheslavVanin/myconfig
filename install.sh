@@ -3,6 +3,7 @@ cp .Xresources $HOME/
 cp .dwmrc $HOME/
 cp .vimrc $HOME/
 cp .clang-format $HOME/
+cp .ycm_extra_conf $HOME/
 
 # Download vim-plug if not exist
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
