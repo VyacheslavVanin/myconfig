@@ -3,7 +3,7 @@ cp .Xresources $HOME/
 cp .dwmrc $HOME/
 cp .vimrc $HOME/
 cp .clang-format $HOME/
-cp .ycm_extra_conf $HOME/
+cp .ycm_extra_conf.py $HOME/
 
 # Download vim-plug if not exist
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
@@ -26,4 +26,4 @@ if command -v vim ; then
 fi
 
 cd ~/.vim/plugged/YouCompleteMe/;
-./install.py --clang-completer --system-libclang
+./install.py --clang-completer
