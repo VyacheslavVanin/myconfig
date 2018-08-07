@@ -1,4 +1,5 @@
 set nocompatible
+set encoding=utf-8
 set vb t_vb= 
 set novisualbell
 
