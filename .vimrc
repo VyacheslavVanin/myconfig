@@ -92,7 +92,8 @@ nnoremap <M-e><M-w> : e ++enc=cp1251<CR>
 nnoremap <M-e><M-u> : e ++enc=utf-8<CR>
 
 nnoremap <F12> : YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F5> :  YcmForceCompileAndDiagnostics<CR><CR>
+nnoremap <F5> :  YcmDiags<CR>
+nnoremap <F3> :  %!clang-format<CR>
 nnoremap <F11> : YcmCompleter FixIt<CR>
 
 " DoxygenToolKit mappings
