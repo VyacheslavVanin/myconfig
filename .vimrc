@@ -56,6 +56,8 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
 Plug 'kris2k/a.vim'
+Plug 'alfredodeza/khuno.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 let g:plug_shallow = 0
