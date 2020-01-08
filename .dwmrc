@@ -2,19 +2,22 @@
 import os
 import time
 
-bash_comands  = [
+bash_comands = [
     'xrandr --output DVI-I-1 --left-of DVI-I-2',
     'wmname LG3D #fix java windows issue',
     'xset b off #turn off speaker in x',
     'export __GLVND_DISALLOW_PATCHING=1',
     'setxkbmap -layout us,ru',
-    'setxkbmap -option',                                      #clear xkbmap options
-    'setxkbmap -option grp:ctrl_shift_toggle,grp_led:scroll', #change language layout
-    #setxkbmap -option ctrl:swapcaps                       # Swap Left Control and Caps Lock
-    'setxkbmap -option ctrl:nocaps',                         # Make Caps Lock a Control key
+    # clear xkbmap options
+    'setxkbmap -option',
+    # change language layout
+    'setxkbmap -option grp:ctrl_shift_toggle,grp_led:scroll',
+    # Swap Left Control and Caps Lock
+    # setxkbmap -option ctrl:swapcaps
+    'setxkbmap -option ctrl:nocaps',         # Make Caps Lock a Control key
 
     'feh --randomize --bg-scale ~/Pictures/wallpapers/*',
-    '~/scripts/setsound&' ]
+    '~/scripts/setsound&']
 
 for c in bash_comands:
     os.system(c)
@@ -22,28 +25,60 @@ for c in bash_comands:
 
 def dateStr():
     t = time.localtime()
-    return "{:02}:{:02}:{:02}".format(t[3], t[4], t[5])
+    return '{:02}:{:02}:{:02}'.format(t[3], t[4], t[5])
+
 
 def batStr():
-    ret = ""
+    ret = ''
     try:
-        ret = "\u26a1" + open("/sys/class/power_supply/BAT0/capacity").read().strip()
-    except:
+        ret = '\u26a1' + \
+            open('/sys/class/power_supply/BAT0/capacity').read().strip()
+    except Exception:
         pass
     return ret
 
+
+def mem_free_line():
+    for line in open('/proc/meminfo').readlines():
+        if line.startswith('MemFree'):
+            return line
+    return None
+
+
+def memFreeStr():
+    mem_free = mem_free_line()
+    if mem_free is None:
+        return ''
+
+    _, free_kb, _ = mem_free.split()
+    free_kb = int(free_kb)
+    if free_kb < 1024:
+        return f'{free_kb}k'
+
+    free_kb //= 1024
+    if free_kb < 1024:
+        return f'{free_kb}M'
+
+    free_kb //= 1024
+    if free_kb < 1024:
+        return f'{free_kb}G'
+
+    return '>T'
+
+
 while True:
-    os.system("xsetroot -name '{}  {}'".format(batStr(), dateStr()))
+    os.system(f"xsetroot -name '{memFreeStr()} {batStr()} {dateStr()}'")
     time.sleep(1)
-    
 
 
+# for composing uncoment xcompmgr or compton
+# xcompmgr&
+# compton --backend glx --refresh-rate 60 --vsync opengl &
 
-#for composing uncoment xcompmgr or compton
-#xcompmgr&
-#compton --backend glx --refresh-rate 60 --vsync opengl & 
-
-#while true; do
-#    xsetroot -name "$(printf '\u26a1')$(cat /sys/class/power_supply/BAT0/capacity)%  $( date +%R:%S )"
-#    sleep 1
-#done
+# while true; do
+#     xsetroot -name \
+#       "$(printf '\u26a1')$(cat /sys/class/power_supply/BAT0/capacity)% \
+#       $( date +%R:%S )"
+#     sleep 1
+# done
+# free -thw | grep Mem: | sed "s/\(\S\+\s\+\)\{2\}//" | sed "s/\s\+\S\+//g"
