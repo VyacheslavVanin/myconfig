@@ -3,7 +3,8 @@ import os
 import time
 
 bash_comands = [
-    'xrandr --output DVI-I-1 --left-of DVI-I-2',
+    'xrandr --output HDMI-1 --rotate left',
+    'xrandr --output HDMI-1 --left-of eDP-1',
     'wmname LG3D #fix java windows issue',
     'xset b off #turn off speaker in x',
     'export __GLVND_DISALLOW_PATCHING=1',
@@ -25,7 +26,8 @@ for c in bash_comands:
 
 def dateStr():
     t = time.localtime()
-    return '{:02}:{:02}:{:02}'.format(t[3], t[4], t[5])
+    return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+    # return '{:02}:{:02}:{:02}'.format(t[3], t[4], t[5])
 
 
 def batStr():
