@@ -26,4 +26,4 @@ if command -v vim ; then
 fi
 
 cd ~/.vim/plugged/YouCompleteMe/;
-./install.py --clang-completer --system-libclang
+./install.py --clangd-completer --go-completer
