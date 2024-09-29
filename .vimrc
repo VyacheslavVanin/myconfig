@@ -30,7 +30,7 @@ set scrolloff=5
 
 if has("gui_running")
 set guifont=DejaVu\ Sans\ Mono\ 20
-set go=-M
+set go=!M
 endif
 
 set background=dark
