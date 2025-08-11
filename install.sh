@@ -4,17 +4,24 @@ cp .dwmrc $HOME/
 cp .vimrc $HOME/
 cp .clang-format $HOME/
 cp .ycm_extra_conf.py $HOME/
+mkdir -p $HOME/.config/nvim/
 cp init.lua $HOME/.config/nvim/
 
-#if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
-#    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-#        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#fi
+if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+if ! command -v uv ; then
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    . $HOME/.profile
+    . $HOME/.bashrc
+fi
 
 # Install plugins
 if command -v nvim ; then
-    nvim -c
-    cd ~/.local/share/nvim/lazy/YouCompleteMe/
+    nvim #+Lazy # but it does not work for some reason, so do it by hand :(
+    cd $HOME/.local/share/nvim/lazy/YouCompleteMe/
     ./install.py --all
 fi
 
