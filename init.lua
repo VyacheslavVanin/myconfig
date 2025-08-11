@@ -50,6 +50,7 @@ require("lazy").setup({
     {'kris2k/a.vim'},
     {'alfredodeza/khuno.vim'},
     {'vim-syntastic/syntastic'},
+    {"VyacheslavVanin/llm-requester.nvim", branch = "tools", submodules = true},
 
     {'rhysd/libclang-vim'},
 
@@ -63,10 +64,47 @@ require("lazy").setup({
 })
 
 require('llm-requester').setup({
-  model = "qwen2.5-coder:latest",  -- Default model
-  split_ratio = 0.5,
-  prompt = '',
-  stream = false,
+  chat = {
+      api_type = 'ollama',
+      --api_type = 'openai',
+      --openai_url = 'https://openrouter.ai/api/v1',
+      --openai_model = 'qwen2.5-coder:latest',
+      --openai_api_key = '<YOUR API KEY>', --openrouter key
+
+      ollama_url = 'http://localhost:11434',
+      ollama_model = 'qwen3-coder:latest',
+
+      stream = true,
+      split_ratio = 0.5,
+      prompt_split_ratio = 0.1,
+      prompt = '', -- automaticaly add to you prompt
+      context_size = 16384,
+      temperature = 0.5,
+      top_k = 20,
+      top_p = 0.95,
+      max_rps = 1,
+      no_verify_ssl = false, -- set true only if you know what you are doing
+      server_port = 8000, -- local server to hold chat sessions and tools
+  },
+  completion = {
+      api_type = 'ollama',
+      --api_type = 'openai',
+      --openai_url = 'https://openrouter.ai/api/v1',
+      --openai_model = 'qwen2.5-coder:latest',
+      --openai_api_key = '<YOUR API KEY>', --openrouter key
+
+      ollama_url = 'http://localhost:11434',
+      ollama_model = 'qwen3-coder:latest',
+
+      context_lines = 500,
+      context_size = 16384,
+
+      keys = {
+          trigger = '<S-Tab>',
+          confirm = '<Tab>',
+      },
+      temperature = 0.1,
+  },
 })
 
 -- Set global options
